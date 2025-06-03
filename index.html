@@ -36,5 +36,24 @@
             </div>
         </div>
     </div>
+    <script>
+        const apiKey = "5bb740ca277044d59fb190306250306";
+        const apiUrl = "https://api.weatherapi.com/v1/forecast.json?key=5bb740ca277044d59fb190306250306&q=Kathmandu&days=3";
+
+        async function checkWeather(){
+            const response = await fetch(apiUrl + '&appid=${apiKey}');
+            var data = await response.json();
+
+            console.log(data);
+
+            document.querySelector(".city.").innerHtml = data.name;
+            document.querySelector(".temp.").innerHtml = data.main.temp + "°c";
+             document.querySelector(".humidity.").innerHtml = data.main.humidity + "%";
+             document.querySelector(".wind.").innerHtml = data.wind.speed + "km/h";
+
+        }
+
+        checkWeather();
+    </script>
 </body>
 </html>
