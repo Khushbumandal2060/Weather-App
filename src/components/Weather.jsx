@@ -59,14 +59,16 @@ const Weather = () => {
       });
     } catch (error) {
       setWeatherData(false);
-      console.error("Error in fetching weather data");
+      console.error("Error in fetching weather data:", error);
     }
   };
 
   
+  // Runs once on mount to show a default city; intentionally not re-run when
+  // `search` is redefined on every render.
   useEffect(() => {
     search("kathmandu");
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   
   const handleKeyDown = (e) => {
